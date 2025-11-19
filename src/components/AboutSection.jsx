@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import devImage from "@/assets/dev-image.jpeg";
 
 const AboutSection = () => {
   return (
@@ -24,14 +25,16 @@ const AboutSection = () => {
         
         <div className="relative">
           {/* Decorative borders */}
-          <div className="absolute -left-6 top-16 w-3 h-10 border border-primary rounded-lg"></div>
-          <div className="absolute -right-6 -top-4 w-6 h-2 border border-primary rounded-lg"></div>
+          <div className="absolute -left-6 top-16 w-3 h-10 border border-primary rounded-lg z-10"></div>
+          <div className="absolute -right-6 -top-4 w-6 h-2 border border-primary rounded-lg z-10"></div>
           
-          {/* Image placeholder */}
+          {/* Profile Image */}
           <div className="relative rounded-xl overflow-hidden aspect-[4/5] bg-muted/20 border border-primary/20">
-            <div className="absolute inset-0 flex items-center justify-center text-muted-foreground/50 font-rubik text-sm">
-              Profile Image
-            </div>
+            <img 
+              src={devImage} 
+              alt="Sougata - Full Stack Developer"
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
       </div>

@@ -39,11 +39,12 @@ const Header = () => {
           </ul>
         </nav>
 
-        <button
+        <a
+          href="mailto:iamsougata.dev@gmail.com"
           className="rounded-full border border-white/30 bg-[rgba(3,3,4,0.5)] px-6 py-2 text-[0.65rem] font-bold uppercase tracking-[0.45em] text-white/90 transition-colors hover:border-white/60 hover:text-white"
         >
           Contact
-        </button>
+        </a>
       </div>
     </header>
   );
