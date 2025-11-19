@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
+import { motion } from 'framer-motion';
 
 const links = [
   { href: '#home', label: 'Home' },
@@ -10,7 +11,11 @@ const links = [
 const Header = () => {
   return (
     <header className="sticky top-4 z-50 w-full">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 rounded-full border border-white/10 bg-[#030304]/60 px-6 py-4 text-white shadow-[0_12px_45px_rgba(0,0,0,0.4)] backdrop-blur-lg">
+      <motion.div 
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="mx-auto flex max-w-7xl items-center justify-between gap-6 rounded-full border border-white/10 bg-[#030304]/60 px-6 py-4 text-white shadow-[0_12px_45px_rgba(0,0,0,0.4)] backdrop-blur-lg">
         <a
           href="#home"
           className="flex items-center gap-2 font-['Syne'] text-lg tracking-[0.4em]"
@@ -45,7 +50,7 @@ const Header = () => {
         >
           Contact
         </a>
-      </div>
+      </motion.div>
     </header>
   );
 };

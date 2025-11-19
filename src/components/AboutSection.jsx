@@ -1,7 +1,26 @@
 import { Button } from "@/components/ui/button";
 import devImage from "@/assets/dev-image.jpeg";
+import { motion } from 'framer-motion';
 
 const AboutSection = () => {
+  const textVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
+  const imageVariants = {
+    hidden: { opacity: 0, x: 20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
   return (
     <section id="about" className="py-20 px-6 lg:px-16 relative overflow-hidden">
       {/* Blur effects */}
@@ -9,7 +28,12 @@ const AboutSection = () => {
       <div className="absolute right-1/4 top-1/3 w-[250px] h-[100px] bg-white/12 blur-[80px] rounded-full -rotate-2"></div>
       
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
-        <div>
+        <motion.div
+          variants={textVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
           <h2 className="font-syne text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
             Hi, I'm Sougata<br />Full Stack Developer
           </h2>
@@ -21,9 +45,15 @@ const AboutSection = () => {
           >
             Learn More About Me
           </Button>
-        </div>
+        </motion.div>
         
-        <div className="relative">
+        <motion.div 
+          className="relative"
+          variants={imageVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
           {/* Decorative borders */}
           <div className="absolute -left-6 top-16 w-3 h-10 border border-primary rounded-lg z-10"></div>
           <div className="absolute -right-6 -top-4 w-6 h-2 border border-primary rounded-lg z-10"></div>
@@ -36,7 +66,7 @@ const AboutSection = () => {
               className="w-full h-full object-cover"
             />
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -3,6 +3,7 @@ import { ArrowRight, ExternalLink } from "lucide-react";
 import ProjectCard from "./ProjectCard";
 import resuRevImage from "@/assets/resu-rev.png";
 import hireMeImage from "@/assets/hire-me.png";
+import { motion } from 'framer-motion';
 
 const ProjectsSection = () => {
   const projects = [
@@ -46,7 +47,13 @@ const ProjectsSection = () => {
       <div className="absolute right-1/4 top-1/3 w-[250px] h-[100px] bg-white/12 blur-[80px] rounded-full -rotate-2"></div>
       
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="text-center mb-12">
+        <motion.div 
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true, margin: "-100px" }}
+        >
           <h2 className="font-syne text-4xl md:text-5xl font-bold text-foreground mb-6">
             My Projects Highlight
           </h2>
@@ -57,13 +64,28 @@ const ProjectsSection = () => {
             Explore More
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
-        </div>
+        </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-16">
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.2,
+              },
+            },
+          }}
+        >
           {projects.map((project, index) => (
             <ProjectCard key={index} {...project} />
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
